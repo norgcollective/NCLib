@@ -64,8 +64,7 @@ def CreateAdwApplicationWindow(self, app, title="Window", edition="Stable", deve
             self.WindowContent.set_layout_manager(self.ClampLayout)
 
         return "Added MainWindow, WindowContent, widget_TitleBar and widget_Title to self"
-
-def CreateAdwAboutWindow(self, AppName, AppVersion, Comment, AppWebsite, DeveloperArray, IconID, silent=False):
+def CreateAdwAboutWindow(self, AppName, AppVersion, Comment, AppWebsite, DeveloperArray, IconID, Troubleshooting, silent=False):
     if not silent: print("NCLIB [" + str(time.time()).split('.')[0] + "]: Called NCLIB.CreateAdwAboutWindow")
     dialog = Adw.AboutWindow(transient_for=self.MainWindow)
     if self.is_under_devel: dialog.add_css_class('devel')
@@ -78,6 +77,7 @@ def CreateAdwAboutWindow(self, AppName, AppVersion, Comment, AppWebsite, Develop
     dialog.set_issue_url("https://" + AppWebsite + "/issues")
     dialog.set_developers(DeveloperArray)
     dialog.set_application_icon(IconID)
+    dialog.set_debug_info(Troubleshooting)
 
     self.dlg_AboutApplication = dialog
 
